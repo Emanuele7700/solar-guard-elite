@@ -83,6 +83,19 @@ st.markdown("""
                         st.success("Account registrato con successo! Ora puoi passare al tab 'Accedi'.")
                     else:
                         st.error("Compila tutti i campi per registrarti.")
+                        
+        with tab_registrati:
+            st.write("")
+            with st.form("register_form"):
+                new_user = st.text_input("Scegli un'Email", key="reg_user")
+                new_pass = st.text_input("Scegli una Password", type="password", key="reg_pass")
+                submit_reg = st.form_submit_button("Crea Account", use_container_width=True)
+                
+                if submit_reg:
+                    if new_user and new_pass:
+                        st.success("Account registrato con successo! Ora puoi passare al tab 'Accedi'.")
+                    else:
+                        st.error("Compila tutti i campi per registrarti.")
                         st.session_state.logged_in = True
                         st.success("Accesso effettuato!")
                         st.rerun()
