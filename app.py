@@ -493,5 +493,8 @@ else:
                     st.download_button("📄 Scarica Report PDF Storico", f.read(), f"{scelta_r}.pdf", "application/pdf")
 if not st.session_state.logged_in:
     login_screen()
-else:
-    # 👉 (Qui sotto va tutto il resto del codice della tua app esistente)
+if st.session_state.logged_in:
+            st.success("Benvenuto!")
+            # Qui sotto va tutto il resto della tua app
+        else:
+            st.warning("Effettua il login per continuare.")
