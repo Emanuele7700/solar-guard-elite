@@ -496,9 +496,8 @@ if not st.session_state.logged_in:
 if st.session_state.logged_in:
             st.success("Benvenuto!")
             # Qui sotto va tutto il resto della tua app
-        if st.session_state.logged_in:
+     if st.session_state.logged_in:
     st.success("Benvenuto!")
     # Il resto della tua app va qui
 else:
     st.warning("Effettua il login per continuare.")
-            st.warning("Effettua il login per continuare.")
