@@ -28,7 +28,9 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib import colors
 from reportlab.lib.units import inch
-
+# --- INIZIALIZZAZIONE LOGIN ---
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
 # --- 1. CONFIGURAZIONE PAGINA ---
 st.set_page_config(page_title="Solar Guard ELITE - Enterprise", page_icon="🛰️", layout="wide")
 
@@ -46,7 +48,24 @@ st.markdown("""
     h1, h2, h3 {
         color: #fbbf24 !important;
         font-weight: 800 !important;
-    }
+    }def login_screen():
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.title("☀️ Solar Guard Elite")
+        st.subheader("Area riservata agli Installatori Professionisti")
+        with st.form("login_form"):
+            username = st.text_input("Username")
+            password = st.text_input("Password", type="password")
+            submit_button = st.form_submit_button("Accedi al Software", use_container_width=True)
+
+            if submit_button:
+                # 👉 QUI PUOI CAMBIARE USERNAME E PASSWORD COME VUOI TU:
+                if username == "admin" and password == "solarguard2026":
+                    st.session_state.logged_in = True
+                    st.success("Accesso effettuato!")
+                    st.rerun()
+                else:
+                    st.error("Credenziali errate.")
 
     div[data-testid="stVerticalBlock"] > div > div {
         background-color: rgba(30, 41, 59, 0.85);
@@ -413,3 +432,7 @@ else:
             with c2:
                 with open(os.path.join(path_p, "report.pdf"), "rb") as f:
                     st.download_button("📄 Scarica Report PDF Storico", f.read(), f"{scelta_r}.pdf", "application/pdf")
+if not st.session_state.logged_in:
+    login_screen()
+else:
+    # 👉 (Qui sotto va tutto il resto del codice della tua app esistente)
