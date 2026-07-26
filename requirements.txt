@@ -6,4 +6,8 @@ piexif
 folium
 streamlit-folium
 reportlab
-ultralytics
+ultralyticsstreamlit
+opencv-python-headless
+pandas
+numpy
+reportlab
