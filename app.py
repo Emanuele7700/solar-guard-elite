@@ -48,28 +48,7 @@ st.markdown("""
     h1, h2, h3 {
         color: #fbbf24 !important;
         font-weight: 800 !important;
-    def login_screen():
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.title("☀️ Solar Guard Elite")
-        st.subheader("Area riservata agli Installatori")
-        
-        # Creiamo due tab: uno per accedere, uno per registrarsi
-        tab_accedi, tab_registrati = st.tabs(["Accedi", "Registrati"])
-        
-        with tab_accedi:
-            with st.form("login_form"):
-                username = st.text_input("Email o Username", key="login_user")
-                password = st.text_input("Password", type="password", key="login_pass")
-                submit_login = st.form_submit_button("Accedi al Software", use_container_width=True)
-                
-                if submit_login:
-                    if username == "admin" and password == "solarguard2026":
-                        st.session_state.logged_in = True
-                        st.success("Accesso effettuato!")
-                        st.rerun()
-                    else:
-                        st.error("Credenziali errate.")
+    
                         
         with tab_registrati:
             with st.form("register_form"):
