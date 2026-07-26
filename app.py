@@ -54,7 +54,6 @@ st.markdown("""
         st.markdown("<h1 style='text-align: center; color: #fbbf24;'>☀️ Solar Guard Elite</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: #ffffff;'>Area riservata agli Installatori</h3>", unsafe_allow_html=True)
         
-        # Creazione dei tab con visibilità forzata
         tab_accedi, tab_registrati = st.tabs(["🔑 Accedi", "📝 Registrati"])
         
         with tab_accedi:
@@ -62,10 +61,28 @@ st.markdown("""
             with st.form("login_form"):
                 username = st.text_input("Email o Username", key="login_user")
                 password = st.text_input("Password", type="password", key="login_pass")
-                submit_login = st.form_submit_button("Accedi al Software", use_company_width=True if 'use_company_width' in globals() else False, use_container_width=True)
+                submit_login = st.form_submit_button("Accedi al Software", use_container_width=True)
                 
                 if submit_login:
                     if username == "admin" and password == "solarguard2026":
+                        st.session_state.logged_in = True
+                        st.success("Accesso effettuato!")
+                        st.rerun()
+                    else:
+                        st.error("Credenziali errate.")
+                        
+        with tab_registrati:
+            st.write("")
+            with st.form("register_form"):
+                new_user = st.text_input("Scegli un'Email", key="reg_user")
+                new_pass = st.text_input("Scegli una Password", type="password", key="reg_pass")
+                submit_reg = st.form_submit_button("Crea Account", use_container_width=True)
+                
+                if submit_reg:
+                    if new_user and new_pass:
+                        st.success("Account registrato con successo! Ora puoi passare al tab 'Accedi'.")
+                    else:
+                        st.error("Compila tutti i campi per registrarti.")
                         st.session_state.logged_in = True
                         st.success("Accesso effettuato!")
                         st.rerun()
