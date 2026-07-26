@@ -1,4 +1,8 @@
 import streamlit as st
+
+if "logged_in" not in st.session_state:
+st.session_state.logged_in = False
+import streamlit as st
 import cv2
 import numpy as np
 import pandas as pd
