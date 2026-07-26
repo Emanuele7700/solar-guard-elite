@@ -1,10 +1,11 @@
 import streamlit as st
 
-# 1. Inizializza lo stato di login
+# --- 1. CONFIGURAZIONE E LOGIN ---
+st.set_page_config(page_title="Solar Guard ELITE", layout="wide")
+
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
-# 2. Se NON è loggato, mostra i tab di Accesso/Registrazione e blocca l'app qui
 if not st.session_state.logged_in:
     st.title("Solar Guard ELITE - Accesso")
     tab_accedi, tab_registrati = st.tabs(["Accedi", "Registrati"])
@@ -32,7 +33,8 @@ if not st.session_state.logged_in:
                 else:
                     st.error("Compila tutti i campi.")
                     
-    st.stop()
+    st.stop() # Ferma l'app qui finché non fai il login
 
-# 3. AREA PROTETTA (Il resto della tua app originale va qui sotto)
+# --- 2. LA TUA APP PROTETTA ---
 st.success("Benvenuto nell'area protetta di Solar Guard ELITE!")
+st.info("Qui sotto puoi rimettere o integrare la grafica della tua dashboard.")
