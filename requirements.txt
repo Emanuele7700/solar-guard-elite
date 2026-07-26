@@ -1,13 +1,5 @@
 streamlit
 opencv-python-headless
-numpy
-pandas
-piexif
-folium
-streamlit-folium
-reportlab
-ultralyticsstreamlit
-opencv-python-headless
 pandas
 numpy
 reportlab
