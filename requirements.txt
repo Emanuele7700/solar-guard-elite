@@ -1,9 +1,0 @@
-streamlit
-opencv-python-headless
-numpy
-pandas
-piexif
-folium
-streamlit-folium
-reportlab
-ultralytics
