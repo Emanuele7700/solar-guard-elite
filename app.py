@@ -465,37 +465,3 @@ if not st.session_state.logged_in:
     login_screen()
 else:
     # 👉 (Qui sotto va tutto il resto del codice della tua app esistente)
-def login_screen():
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.title("☀️ Solar Guard Elite")
-        st.subheader("Area riservata agli Installatori")
-        
-        # Creiamo due tab: uno per accedere, uno per registrarsi
-        tab_accedi, tab_registrati = st.tabs(["Accedi", "Registrati"])
-        
-        with tab_accedi:
-            with st.form("login_form"):
-                username = st.text_input("Email o Username", key="login_user")
-                password = st.text_input("Password", type="password", key="login_pass")
-                submit_login = st.form_submit_button("Accedi al Software", use_container_width=True)
-                
-                if submit_login:
-                    if username == "admin" and password == "solarguard2026":
-                        st.session_state.logged_in = True
-                        st.success("Accesso effettuato!")
-                        st.rerun()
-                    else:
-                        st.error("Credenziali errate.")
-                        
-        with tab_registrati:
-            with st.form("register_form"):
-                new_user = st.text_input("Scegli un'Email", key="reg_user")
-                new_pass = st.text_input("Scegli una Password", type="password", key="reg_pass")
-                submit_reg = st.form_submit_button("Crea Account", use_container_width=True)
-                
-                if submit_reg:
-                    if new_user and new_pass:
-                        st.success("Account registrato con successo! Ora puoi passare al tab 'Accedi'.")
-                    else:
-                        st.error("Compila tutti i campi per registrarti.")
